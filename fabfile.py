@@ -38,7 +38,8 @@ def _packages():
     'devel/py27-virtualenv',
     'devel/py27-pip',
     'www/chromium',
-    'x11-fonts/powerline-fonts'
+    'x11-fonts/powerline-fonts',
+    'converters/dosunix'
   ]
 
 
@@ -184,3 +185,4 @@ def _vim():
             print('cloning %s from %s' % (vim_bundle, url))
             git_clone(url, vim_bundle)
 
+  fabric.operations.put('files/vim/*', '/home/azul/.vim/')
