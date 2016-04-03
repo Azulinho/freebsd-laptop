@@ -177,12 +177,15 @@ def _vim():
 
   fabric.api.local('test -e /home/azul/.vim/bundle || mkdir -p /home/azul/.vim/bundle')
 
-  with fabric.context_managers.lcd('/home/azul/.vim/bundle/'):
-    for url in vim_bundle_urls:
-        vim_bundle = str(url.split('/')[-1]).split('.git')[0]
-        print('checking for vim plugin  %s from %s' % (vim_bundle, url))
-        if not fabric.contrib.files.exists('/home/azul/.vim/bundle/%s' % vim_bundle):
-            print('cloning %s from %s' % (vim_bundle, url))
+  for url in vim_bundle_urls:
+      vim_bundle = str(url.split('/')[-1]).split('.git')[0]
+      print('checking for vim plugin  %s from %s' % (vim_bundle, url))
+      if not fabric.contrib.files.exists('/home/azul/.vim/bundle/%s' % vim_bundle):
+          print('cloning %s from %s' % (vim_bundle, url))
+          with fabric.context_managers.cd('/home/azul/.vim/bundle/'):
             git_clone(url, vim_bundle)
 
   fabric.operations.put('files/vim/*', '/home/azul/.vim/')
+
+  fabric.api.local('rm -f /home/azul/.vimrc || echo')
+  fabric.api.local('ln -s /home/azul/.vim/vimrc /home/azul/.vimrc')
