@@ -1,0 +1,2 @@
+Bundle 'easymotion/vim-easymotion'
+

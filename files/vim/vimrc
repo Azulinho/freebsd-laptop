@@ -1,0 +1,719 @@
+" ============================================================================
+" Vundle initialization
+" Avoid modify this section, unless you are very sure of what you are doing
+
+" no vi-compatible
+set nocompatible
+
+" VUNDLE {{{
+    let iCanHazVundle=1
+    let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+    if !filereadable(vundle_readme)
+        echo "Installing Vundle..."
+        echo ""
+        silent !mkdir -p ~/.vim/bundle
+        silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+        let iCanHazVundle=0
+    endif
+
+    filetype off
+
+    let s:bundle_path=$HOME."/.vim/bundle/"
+    execute "set rtp+=".s:bundle_path."vundle/"
+    call vundle#rc()
+
+    " let Vundle manage Vundle
+    Bundle 'gmarik/vundle'
+" }}}
+
+
+let mapleader = ","
+let maplocalleader = "\\"
+
+" VIM SETTINGS {{
+
+
+    " BACKUPS {{{
+    if filereadable(expand("~/.vim/backups.vimrc"))
+      source ~/.vim/backups.vimrc
+    endif
+    " }}}
+
+" }}
+
+
+
+" UI {{{
+    if filereadable(expand("~/.vim/ui.vimrc"))
+      source ~/.vim/ui.vimrc
+    endif
+
+    " _. Airline {{{
+    if filereadable(expand("~/.vim/airline.vimrc"))
+      source ~/.vim/airline.vimrc
+    endif
+    " }}}
+
+    " _. INDENTILINE{{{
+    if filereadable(expand("~/.vim/indentline.vimrc"))
+      source ~/.vim/indentline.vimrc
+    endif
+
+    " COLORSCHEME {{{
+    if filereadable(expand("~/.vim/colorscheme.vimrc"))
+      source ~/.vim/colorscheme.vimrc
+    endif
+    " }}}
+
+    " NERD-TREE {{{
+    if filereadable(expand("~/.vim/nerd-tree.vimrc"))
+      source ~/.vim/nerd-tree.vimrc
+    endif
+    " }}}
+" }}}
+
+
+" SEARCH {{{
+    if filereadable(expand("~/.vim/search.vimrc"))
+      source ~/.vim/search.vimrc
+    endif
+
+    " AGREP {{{
+    if filereadable(expand("~/.vim/agrep.vimrc"))
+      source ~/.vim/agrep.vimrc
+    endif
+    " }}}
+
+    " _. GGREP{{{
+    if filereadable(expand("~/.vim/ggrep.vimrc"))
+      source ~/.vim/ggrep.vimrc
+    endif
+    " }}}
+
+    " _. INDEXED SEARCH{{{
+    if filereadable(expand("~/.vim/indexedsearch.vimrc"))
+      source ~/.vim/indexedsearch.vimrc
+    endif
+    " }}}
+" }}}
+
+
+" BUFFERS, SPLITS and TABS {{{
+if filereadable(expand("~/.vim/buffers.vimrc"))
+  source ~/.vim/buffers.vimrc
+endif
+
+if filereadable(expand("~/.vim/tabman.vimrc"))
+  source ~/.vim/tabman.vimrc
+endif
+
+if filereadable(expand("~/.vim/choosewin.vimrc"))
+  source ~/.vim/choosewin.vimrc
+endif
+
+
+
+" }}}
+
+" EDITORCONFIG {{{
+if filereadable(expand("~/.vim/editorconfig.vimrc"))
+  source ~/.vim/editorconfig.vimrc
+endif
+" }}}
+
+" YANKRING {{{
+if filereadable(expand("~/.vim/yankring.vimrc"))
+  source ~/.vim/yankring.vimrc
+endif
+" }}}
+
+" YANKSTACK {{{
+if filereadable(expand("~/.vim/yankstack.vimrc"))
+  source ~/.vim/yankstack.vimrc
+endif
+" }}}
+
+
+
+" CODING HELPERS {{
+
+    " _. DRAGVISUALS{{{
+    if filereadable(expand("~/.vim/dragvisuals.vimrc"))
+      source ~/.vim/dragvisuals.vimrc
+    endif
+    " }}}
+
+    " _. SYNTASTIC{{{
+    if filereadable(expand("~/.vim/syntastic.vimrc"))
+      source ~/.vim/syntastic.vimrc
+    endif
+    " }}}
+
+    " _. NERDCOMMENTER{{{
+    if filereadable(expand("~/.vim/nerdcommenter.vimrc"))
+      source ~/.vim/nerdcommenter.vimrc
+    endif
+    " }}}
+
+    " FASTFOLD {{{
+    if filereadable(expand("~/.vim/fastfold.vimrc"))
+      source ~/.vim/fastfold.vimrc
+    endif
+    " }}}
+
+    " NEOCOMPLETE {{{
+    if filereadable(expand("~/.vim/neocomplete.vimrc"))
+      source ~/.vim/neocomplete.vimrc
+    endif
+    " }}}
+
+    " SNIPPETS {{{
+    if filereadable(expand("~/.vim/snippets.vimrc"))
+      source ~/.vim/snippets.vimrc
+    endif
+    " }}}
+
+    " _. CTRLP {{{
+    if filereadable(expand("~/.vim/ctrlp.vimrc"))
+      source ~/.vim/ctrlp.vimrc
+    endif
+    " }}}
+
+    " _. VIMUX{{{
+    if filereadable(expand("~/.vim/vimux.vimrc"))
+      source ~/.vim/vimux.vimrc
+    endif
+    " }}}
+
+    " _. TAGBAR{{{
+    if filereadable(expand("~/.vim/tagbar.vimrc"))
+      source ~/.vim/tagbar.vimrc
+    endif
+    " }}}
+
+    " SRCEXPLORER {{{
+    if filereadable(expand("~/.vim/srcexplorer.vimrc"))
+      source ~/.vim/srcexplorer.vimrc
+    endif
+    " }}}
+
+    " SLIMUX {{{
+    if filereadable(expand("~/.vim/slimux.vimrc"))
+      source ~/.vim/slimux.vimrc
+    endif
+    " }}}
+
+    " RAINBOW {{{
+    if filereadable(expand("~/.vim/rainbow.vimrc"))
+      source ~/.vim/rainbow.vimrc
+    endif
+    " }}}
+
+    " SURROUND {{{
+    if filereadable(expand("~/.vim/surround.vimrc"))
+      source ~/.vim/surround.vimrc
+    endif
+    " }}}
+
+    " EasyMotion {{{
+    if filereadable(expand("~/.vim/easymotion.vimrc"))
+      source ~/.vim/easymotion.vimrc
+    endif
+    " }}}
+
+    " ConqueTerm {{{
+    if filereadable(expand("~/.vim/conque-term.vimrc"))
+      source ~/.vim/conque-term.vimrc
+    endif
+    " }}}
+
+    " FixedTaskList {{{
+    if filereadable(expand("~/.vim/fixedtasklist.vimrc"))
+      source ~/.vim/fixedtasklist.vimrc
+    endif
+    " }}}
+
+    " AutoClose {{{
+    if filereadable(expand("~/.vim/autoclose.vimrc"))
+      source ~/.vim/autoclose.vimrc
+    endif
+    " }}}
+
+" }}
+
+
+" CFG-MGMT {{
+
+    " PUPPET {{{
+    if filereadable(expand("~/.vim/puppet.vimrc"))
+      source ~/.vim/puppet.vimrc
+    endif
+    " }}}
+
+" }}
+
+
+" CODING LANGUAGES {{
+    " PYTHON {{{
+    if filereadable(expand("~/.vim/python.vimrc"))
+      source ~/.vim/python.vimrc
+    endif
+    " }}}
+
+
+    " RUBY {{{
+    if filereadable(expand("~/.vim/ruby.vimrc"))
+      source ~/.vim/ruby.vimrc
+    endif
+    " }}}
+
+    " HASKELL {{{
+    if filereadable(expand("~/.vim/haskell.vimrc"))
+      source ~/.vim/haskell.vimrc
+    endif
+    " }}}
+
+    " JAVASCRIPT {{{
+    if filereadable(expand("~/.vim/javascript.vimrc"))
+      source ~/.vim/javascript.vimrc
+    endif
+    " }}}
+
+    " CLOJURE {{{
+    if filereadable(expand("~/.vim/clojure.vimrc"))
+      source ~/.vim/clojure.vimrc
+    endif
+    " }}}
+
+    " HTML {{{
+    if filereadable(expand("~/.vim/html.vimrc"))
+      source ~/.vim/html.vimrc
+    endif
+    " }}}
+
+    " CSS {{{
+    if filereadable(expand("~/.vim/css.vimrc"))
+      source ~/.vim/css.vimrc
+    endif
+    " }}}
+
+    " _. Clang {{{
+    Bundle 'LucHermitte/vim-clang'
+    Bundle 'vim-scripts/c.vim'
+    " }}}
+
+    " PowerShell {{{
+    if filereadable(expand("~/.vim/powershell.vimrc"))
+      source ~/.vim/powershell.vimrc
+    endif
+    " }}}
+
+
+"
+" General {{{
+
+
+Bundle 'matthias-guenther/hammer.vim'
+nmap <leader>p :Hammer<cr>
+
+Bundle 'tsaleh/vim-align'
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'tpope/vim-eunuch'
+
+
+Bundle 'kana/vim-textobj-user'
+
+
+Bundle 'michaeljsmith/vim-indent-object'
+let g:indentobject_meaningful_indentation = ["haml", "sass", "python", "yaml", "markdown"]
+
+Bundle 'Spaceghost/vim-matchit'
+
+
+Bundle 'vim-scripts/scratch.vim'
+
+Bundle 'troydm/easybuffer.vim'
+nmap <leader>be :EasyBufferToggle<enter>
+
+
+Bundle 'terryma/vim-multiple-cursors'
+
+
+
+
+
+" _. OS {{{
+Bundle 'zaiste/tmux.vim'
+" }}}
+"
+
+" _. Coding {{{
+
+
+" _. GIT{{{
+if filereadable(expand("~/.vim/git.vimrc"))
+  source ~/.vim/git.vimrc
+endif
+" }}}
+"
+
+
+" - Bundle 'msanders/snipmate.vim'
+Bundle 'sjl/splice.vim'
+" --
+
+Bundle 'vim-scripts/Reindent'
+
+" }}}
+"
+
+
+" _. Elixir {{{
+Bundle 'elixir-lang/vim-elixir'
+" }}}
+
+
+" General {{{
+
+
+" }}}
+
+" Mappings {{{
+
+" You want to be part of the gurus? Time to get in serious stuff and stop using
+" arrow keys.
+noremap <left> <nop>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <right> <nop>
+
+" Yank from current cursor position to end of line
+map Y y$
+" Yank content in OS's clipboard. `o` stands for "OS's Clipoard".
+vnoremap <leader>yo "*y
+" Paste content from OS's clipboard
+nnoremap <leader>po "*p
+
+" clear highlight after search
+noremap <silent><Leader>/ :nohls<CR>
+
+" better ESC
+inoremap <C-k> <Esc>
+
+nmap <silent> <leader>hh :set invhlsearch<CR>
+nmap <silent> <leader>ll :set invlist<CR>
+nmap <silent> <leader>nn :set invnumber<CR>
+nmap <silent> <leader>pp :set invpaste<CR>
+nmap <silent> <leader>ii :set invrelativenumber<CR>
+
+" Seriously, guys. It's not like :W is bound to anything anyway.
+command! W :w
+
+" Emacs bindings in command line mode
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
+
+
+
+" }}}
+"
+
+" Settings {{{
+"
+
+" Triggers {{{
+
+" Save when losing focus
+au FocusLost    * :silent! wall
+"
+" When vimrc is edited, reload it
+autocmd! BufWritePost vimrc source ~/.vimrc
+
+" }}}
+
+" Cursorline {{{
+" Only show cursorline in the current window and in normal mode.
+augroup cline
+    au!
+    au WinLeave * set nocursorline
+    au WinEnter * set cursorline
+    au InsertEnter * set nocursorline
+    au InsertLeave * set cursorline
+augroup END
+" }}}
+
+" Trailing whitespace {{{
+" Only shown when not in insert mode so I don't go insane.
+augroup trailing
+    au!
+    au InsertEnter * :set listchars-=trail:␣
+    au InsertLeave * :set listchars+=trail:␣
+augroup END
+
+" Remove trailing whitespaces when saving
+" Wanna know more? http://vim.wikia.com/wiki/Remove_unwanted_spaces
+" If you want to remove trailing spaces when you want, so not automatically,
+" see
+" http://vim.wikia.com/wiki/Remove_unwanted_spaces#Display_or_remove_unwanted_whitespace_with_a_script.
+autocmd BufWritePre * :%s/\s\+$//e
+
+" }}}
+
+" }}}
+
+" Navigation & UI {{{
+
+" Begining & End of line in Normal mode
+noremap H ^
+noremap L g_
+
+" more natural movement with wrap on
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" Easy splitted window navigation
+noremap <C-h>  <C-w>h
+noremap <C-j>  <C-w>j
+noremap <C-k>  <C-w>k
+noremap <C-l>  <C-w>l
+
+" Easy buffer navigation
+noremap <leader>bp :bprevious<cr>
+noremap <leader>bn :bnext<cr>
+
+" Splits ,v and ,h to open new splits (vertical and horizontal)
+nnoremap <leader>v <C-w>v<C-w>l
+nnoremap <leader>h <C-w>s<C-w>j
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" Bubbling lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
+" }}}
+
+" . folding {{{
+
+set foldlevelstart=0
+set foldmethod=syntax
+
+" Space to toggle folds.
+nnoremap <space> za
+vnoremap <space> za
+
+" Make zO recursively open whatever top level fold we're in, no matter where the
+" cursor happens to be.
+nnoremap zO zCzO
+
+" Use ,z to "focus" the current fold.
+nnoremap <leader>z zMzvzz
+
+" }}}
+
+
+" --------------------
+
+set ofu=syntaxcomplete#Complete
+let g:rubycomplete_buffer_loading = 0
+let g:rubycomplete_classes_in_global = 1
+
+" showmarks
+let g:showmarks_enable = 1
+hi! link ShowMarksHLl LineNr
+hi! link ShowMarksHLu LineNr
+hi! link ShowMarksHLo LineNr
+hi! link ShowMarksHLm LineNr
+
+" }}}
+
+" _ Vim {{{
+augroup ft_vim
+    au!
+
+    au FileType vim setlocal foldmethod=marker
+    au FileType help setlocal textwidth=78
+    au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
+augroup END
+" }}}
+
+
+" EXTENSIONS {{{
+
+" _. Scratch {{{
+source ~/.vim/functions/scratch_toggle.vim
+" }}}
+
+" _. Buffer Handling {{{
+source ~/.vim/functions/buffer_handling.vim
+" }}}
+
+" _. Tab {{{
+source ~/.vim/functions/insert_tab_wrapper.vim
+" }}}
+
+" _. Text Folding {{{
+source ~/.vim/functions/my_fold_text.vim
+" }}}
+
+" _. Gist {{{
+" Send visual selection to gist.github.com as a private, filetyped Gist
+" Requires the gist command line too (brew install gist)
+vnoremap <leader>G :w !gist -p -t %:e \| pbcopy<cr>
+" }}}
+
+" }}}
+
+" TEXT OBJECTS {{{
+
+" Shortcut for [] motion
+onoremap ir i[
+onoremap ar a[
+vnoremap ir i[
+vnoremap ar a[
+
+" }}}
+
+
+" set leaderkey to ,
+let mapleader = ","
+let maplocalleader = "\\"
+
+" VUNDLE {{{
+"let s:bundle_path=$HOME."/.vim/bundle/"
+"execute "set rtp+=".s:bundle_path."vundle/"
+"call vundle#rc()
+
+"Bundle 'gmarik/vundle'
+" }}}
+
+
+
+set hlsearch
+"type ,<space> to clear highlighted searches
+nnoremap <leader><space> :noh<cr>
+"nnoremap <tab> %
+"vnoremap <tab> %
+
+
+"Rainbow Paratensis, always on
+"au VimEnter * RainbowParenthesesToggle
+"au Syntax * RainbowParenthesesLoadRound
+"au Syntax * RainbowParenthesesLoadSquare
+"au Syntax * RainbowParenthesesLoadBraces
+
+
+"reselect text that was just pasted
+nnoremap <leader>v V`]
+
+"set indentation values
+"autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+
+
+
+
+"set t_Co=256 "lets support 256 colors
+
+:"VisualExplorer
+map ve :VE<CR>
+
+"Move through window splits
+"map wl :wincmd l<CR>
+"map wh :wincmd h<CR>
+"map wj :wincmd j<CR>
+"map wk :wincmd k<CR>
+"
+"vim menu
+map mn :emenu<SPACE>
+
+"
+
+" Tabline colors
+hi TabLine      ctermfg=Black  ctermbg=DarkGrey     cterm=NONE
+hi TabLineFill  ctermfg=Black  ctermbg=DarkGrey     cterm=NONE
+hi TabLineSel   ctermfg=White  ctermbg=Blue  cterm=NONE
+
+" MiniBufExpl Colors
+hi MBENormal               guifg=#808080 guibg=fg
+hi MBEChanged              guifg=#CD5907 guibg=fg
+hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
+hi MBEVisibleChanged       guifg=#F1266F guibg=fg
+hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
+hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
+
+"let g:miniBufExplVSplit = 20   " column width in chars
+
+"
+"
+""" Searching
+set hlsearch                    " highlight matches
+set incsearch                   " incremental searching
+set ignorecase                  " searches are case insensitive...
+set smartcase                   " ... unless they contain at least one capital letter
+
+
+
+
+"Set taglist to the left
+let Tlist_Use_Left_Window   = 1
+
+"Use :Edit .vim/colors/* to open all files in that directory
+com! -complete=file -nargs=* Edit silent! exec "!vim --servername " . v:servername . " --remote-silent <args>"
+
+"TSelectBuffer -> buffer list
+map tsb :TSelectBuffer<cr>
+
+"xml
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+
+"slime
+"let g:slime_python_ipython = 1
+"let g:slime_target = "tmux"
+
+
+
+noremap <leader>tsb :TSelectBuffer<cr>
+
+noremap <leader>tig :!tig %<cr>
+
+
+
+nnoremap <leader>s :ScratchToggle<cr>
+
+
+
+" The next line maps Jedi's jump to de­f­i­n­i­tion/de­c­la­ra­tion fea­ture to
+" the <leader>g short­cut:
+" nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+set tags=tags;/
+
+
+
+"
+"
+
+au BufRead,BufNewFile {*.yaml,*.yml} set ft=yaml
+
+" undotree
+nnoremap <leader>tu :UndoTreeToggle<cr>
+
+" tig
+function! s:tig_status()
+  cd `driller --scm-root %`
+  !tig status
+endfunction
+
+map <leader>tig :TigStatus<CR><CR>
+command! TigStatus call s:tig_status()
