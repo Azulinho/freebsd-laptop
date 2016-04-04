@@ -1,7 +1,7 @@
 import cuisine
 import fabric
 import re
-from fabric.context_managers import settings
+from fabric.context_managers import settings, hide
 from bookshelf.api_v2.git import git_clone
 
 cuisine.mode_local()
@@ -17,14 +17,14 @@ def _ensure_local_line(filename, line):
 
 
 def _is_installed(pkg):
-  with settings(warn_only=True):
+  with settings(hide('everything'), warn_only=True):
     item = pkg.split('/')[1]
-    return cuisine.sudo('pkg info %s' % item)
+    return cuisine.sudo('pkg info %s >/dev/null 2>&1' % item).return_code == 0
 
 
 def _ensure_package(pkg):
     if not _is_installed(pkg):
-       print('installing %s ...' % item)
+       print('installing %s ...' % pkg)
        cuisine.sudo('portmaster -mBATCH=yes -dBG --no-confirm --delete-packages --update-if-newer -y %s' % pkg)
 
 
@@ -54,6 +54,7 @@ def setup():
   _zerotier()
   _virtualbox()
   _vim()
+  _x11_themes()
 
 
 def _zerotier():
@@ -69,10 +70,12 @@ def _virtualbox():
 
 def _vim():
   _ensure_package('editors/vim')
+  _ensure_package('devel/py-jedi')
   _ensure_local_line('/home/azul/.profile', 'alias vi=vim')
   _ensure_local_line('/boot/loader.conf', 'vboxdrv_load="YES"')
 
   vim_bundle_urls = [
+    'https://github.com/gmarik/vundle.git',
     'https://github.com/zaiste/Atom.git',
     'https://github.com/fisadev/FixedTaskList.vim.git',
     'https://github.com/vim-scripts/IndexedSearch.git',
@@ -137,7 +140,6 @@ def _vim():
     'https://github.com/Elive/vim-colorscheme-elive.git',
     'https://github.com/flazz/vim-colorschemes.git',
     'https://github.com/fisadev/vim-ctrlp-cmdpalette.git',
-    'https://github.com/fisadev/vim-debug.vim.git',
     'https://github.com/easymotion/vim-easymotion.git',
     'https://github.com/elixir-lang/vim-elixir.git',
     'https://github.com/tpope/vim-endwise.git',
@@ -189,3 +191,174 @@ def _vim():
 
   fabric.api.local('rm -f /home/azul/.vimrc || echo')
   fabric.api.local('ln -s /home/azul/.vim/vimrc /home/azul/.vimrc')
+
+
+def _x11_themes():
+    themes = [
+    'adwaita-common',
+    'adwaita-icon-theme',
+    'adwaita-qt4',
+    'adwaita-qt5',
+    'audacious-skins',
+    'beastie',
+    'claws-mail-themes',
+    'clearlooks',
+    'clearlooks-metacity',
+    'clearlooks-phenix-theme',
+    'clearlooks-themes',
+    'clearlooks-themes-extras',
+    'cursor-chameleon-anthracite',
+    'cursor-chameleon-darkskyblue',
+    'cursor-chameleon-pearl',
+    'cursor-chameleon-skyblue',
+    'cursor-chameleon-white',
+    'cursor-crystal-theme',
+    'cursor-dmz-aa-theme',
+    'cursor-dmz-theme',
+    'cursor-ecliz',
+    'cursor-grounation-theme',
+    'cursor-jimmac-theme',
+    'cursor-neutral-theme',
+    'cursor-neutral-white-theme',
+    'cursor-polar-theme',
+    'e16-themes',
+    'emerald-themes',
+    'fluxbox-tenr-styles-pack',
+    'fvwm-themes',
+    'gnome-backgrounds',
+    'gnome-icon-theme-symbolic',
+    'gnome-icons',
+    'gnome-icons-aqua-fusion',
+    'gnome-icons-crystal',
+    'gnome-icons-dropline-neu',
+    'gnome-icons-dropline-nou',
+    'gnome-icons-elementary',
+    'gnome-icons-faenza',
+    'gnome-icons-gentoo-test',
+    'gnome-icons-gion',
+    'gnome-icons-iris',
+    'gnome-icons-jini',
+    'gnome-icons-lila',
+    'gnome-icons-noia-full',
+    'gnome-icons-noia-warm',
+    'gnome-icons-refined',
+    'gnome-icons-slick',
+    'gnome-icons-snow-apple',
+    'gnome-icons-stylish',
+    'gnome-icons-ximian-south',
+    'gnome-themes',
+    'gnome-themes-extras',
+    'gnome-themes-standard',
+    'greybird-theme',
+    'gtk-E17-theme',
+    'gtk-aluminumalloy-cryogenic-theme',
+    'gtk-aluminumalloy-smog-theme',
+    'gtk-aluminumalloy-toxic-theme',
+    'gtk-aluminumalloy-volcanic-theme',
+    'gtk-aquaextremesunken-theme',
+    'gtk-aurora-engine',
+    'gtk-blueprint-engine',
+    'gtk-cleanice-engine',
+    'gtk-digital-cream-theme',
+    'gtk-digital-harmony-theme',
+    'gtk-engines2',
+    'gtk-envy-theme',
+    'gtk-equinox-engine',
+    'gtk-gray-theme',
+    'gtk-lila-theme',
+    'gtk-lila-theme-extras',
+    'gtk-longhorninspirat-theme',
+    'gtk-milk-theme',
+    'gtk-murrina-aqua',
+    'gtk-murrina-fancy-clearlooks',
+    'gtk-murrina-lightblue',
+    'gtk-murrine-engine',
+    'gtk-murrine-themes',
+    'gtk-nodoka-engine',
+    'gtk-oxygen-engine',
+    'gtk-qnxtheme',
+    'gtk-qt4-engine',
+    'gtk-xfce-engine',
+    'gtk3-oxygen-engine',
+    'gtk3-unico-engine',
+    'icon-naming-utils',
+    'icons-human-azul',
+    'icons-tango',
+    'icons-tango-extras',
+    'irssi-themes',
+    'kde-gtk-config',
+    'kde-icons-black-and-white',
+    'kde-icons-cezanne',
+    'kde-icons-dark-glass',
+    'kde-icons-gartoon-blue-svg',
+    'kde-icons-gartoon-svg',
+    'kde-icons-graphite-rade8',
+    'kde-icons-icosx',
+    'kde-icons-kool-gorilla',
+    'kde-icons-lime-rade8',
+    'kde-icons-lush',
+    'kde-icons-noia',
+    'kde-icons-nuovext2',
+    'kde-icons-nuvola',
+    'kde-icons-sky',
+    'kde-icons-umicons',
+    'kde4-base-artwork',
+    'kde4-icons-oxygen',
+    'kde4-style-bespin',
+    'kde4-style-nitrogen',
+    'kde4-style-oxygen-transparent',
+    'kde4-style-polyester',
+    'kde4-style-skulpture',
+    'kde4-wallpapers',
+    'kde4-wallpapers-freebsd',
+    'kde4-windeco-crystal',
+    'kde4-windeco-dekorator',
+    'kdeartwork4',
+    'linux-c6-hicolor-icon-theme',
+    'linux-f10-hicolor-icon-theme',
+    'linux-f10-qtcurve-gtk2',
+    'linux-hicolor-icon-theme',
+    'lxappearance',
+    'lxde-icon-theme',
+    'mate-backgrounds',
+    'mate-icon-theme',
+    'mate-icon-theme-faenza',
+    'mate-themes',
+    'metacity-aluminumalloy-cryogenic-theme',
+    'metacity-aluminumalloy-smog-theme',
+    'metacity-aluminumalloy-toxic-theme',
+    'metacity-aluminumalloy-volcanic-theme',
+    'metacity-aquaextremesunken-theme',
+    'metacity-digital-cream-theme',
+    'metacity-digital-harmony-theme',
+    'metacity-longhorninspirat-theme',
+    'metacity-milk-theme',
+    'metacity-theme-microgui',
+    'metacity-themes',
+    'mint-themes',
+    'murrine-configurator',
+    'nimbus',
+    'numix-theme',
+    'openbox-themes',
+    'plank-theme-moka',
+    'qt4-style-float',
+    'qt4-style-phase',
+    'qt4-style-quantumstyle',
+    'qtcurve',
+    'qtcurve-gtk2',
+    'qtcurve-kde4',
+    'qtcurve-qt4',
+    'qtcurve-qt5',
+    'qtcurve-utils',
+    'rezlooks',
+    'sawfish-themes',
+    'slim-themes',
+    'thewidgetfactory',
+    'ubuntulooks',
+    'xcursor-themes'
+    ]
+
+    for item in themes:
+        _ensure_package('x11-themes/' + item)
+
+
